@@ -8,6 +8,8 @@
     --text-color: #714c2b;
     --text-form: var(--text-color);
     --shadow-box: var(--reddish-brown);
+    --letter-block: #743e00;
+    --letter-block-shadow: ;
 }
 
 .dark-mode {
@@ -16,6 +18,8 @@
     --dark-brown: #2B1B0F;
     --shadow-box: #ac8569;
     --text-form: #77705d;
+    --letter-block: #ffdaaf;
+    --letter-block-shadow: #949494;
 }
 
 .intro {
@@ -85,12 +89,12 @@ body {
     color: var(--text-form);
     font-family: 'Poppins';
     font-size: 1rem;
-    appearance: none; /* remove aparência padrão */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-left: 10px; /* espaço entre o texto e o botão */
+    margin-left: 10px;
     text-align: center;
 }
 
@@ -102,4 +106,68 @@ body {
     outline: none;
     box-shadow: 0 0 8px var(--shadow-box);
     border-color: var(--caramel);
+}
+
+.letter-block {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: var(--letter-block);
+    box-shadow: 0 4px 5px 2px var(--letter-block-shadow);
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.letter-inserted {
+    transform: scale(1.1);
+}
+
+.game-rows {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.keyboard-row {
+    display: flex;
+    margin: 5px 0;
+}
+
+.key {
+    background-color: var(--letter-block);
+    color: white;
+    border: none;
+    margin: 3px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.key:hover {
+    transform: scale(1.1);
+}
+
+.key-delete, .key-enter {
+    background-color: var(--mustard);
 }
