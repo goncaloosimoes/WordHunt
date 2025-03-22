@@ -1,6 +1,105 @@
+:root {
+    --yellow-gold: #F4C430;
+    --mustard: #D4A017;
+    --caramel: #A65F2B;
+    --reddish-brown: #7B3F00;
+    --dark-brown: #4B2E0F;
+    --background-light: #c9b88470;
+    --text-color: #714c2b;
+    --text-form: var(--text-color);
+    --shadow-box: var(--reddish-brown);
+}
+
+.dark-mode {
+    --background-light: #332316;
+    --text-color: #e3d8b8;
+    --dark-brown: #2B1B0F;
+    --shadow-box: #ac8569;
+    --text-form: #77705d;
+}
+
+.intro {
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins';
+    top: 40px;
+    color: var(--text-color);
+}
+
+body {
+    background-color: var(--background-light);
+}
+
+#theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--yellow-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    border-width: 0;
+    transition:
+        box-shadow 0.4s ease,
+        background-color 0.4s ease,
+        transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#theme-switch:hover {
+    transform: rotate(20deg) scale(1.15);
+    box-shadow: 0 4px 12px var(--shadow-box);
+}
+
+#theme-switch svg {
+    fill: var(--fourth-color);
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.dark-mode #theme-switch svg:first-child {
+    display: none;
+}
+
+.dark-mode #theme-switch svg:last-child {
+    display: block;
+}
+
+#length-form {
+    padding: 5px 5px;
+    border: 0px;
+    border-radius: 40%;
+    color: var(--text-form);
+    font-family: 'Poppins';
+    font-size: 1rem;
+    appearance: none; /* remove aparência padrão */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 10px; /* espaço entre o texto e o botão */
+    text-align: center;
+}
+
+#length-form:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+#length-form:focus {
+    outline: none;
+    box-shadow: 0 0 8px var(--shadow-box);
+    border-color: var(--caramel);
 }
