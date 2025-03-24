@@ -9,7 +9,7 @@
     --text-form: var(--text-color);
     --shadow-box: var(--reddish-brown);
     --letter-block: #743e00;
-    --letter-block-shadow: ;
+    --letter-block-shadow: #303030;
 }
 
 .dark-mode {
@@ -161,11 +161,13 @@ body {
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 4px var(--shadow-box);
 }
 
 .key:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 8px var(--shadow-box);
 }
 
 .key-delete, .key-enter {
