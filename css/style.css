@@ -10,6 +10,7 @@
     --shadow-box: var(--reddish-brown);
     --letter-block: #743e00;
     --letter-block-shadow: #303030;
+    --keyboard-letter: #ead1b7;
 }
 
 .dark-mode {
@@ -20,6 +21,7 @@
     --text-form: #77705d;
     --letter-block: #ffdaaf;
     --letter-block-shadow: #949494;
+    --keyboard-letter: #4B2E0F;
 }
 
 .intro {
@@ -110,6 +112,9 @@ body {
 
 .letter-block {
     display: inline-block;
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: var(--keyboard-letter);
     width: 40px;
     height: 40px;
     margin: 5px;
@@ -141,28 +146,39 @@ body {
 }
 
 .keyboard {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .keyboard-row {
     display: flex;
+    justify-content: center;
     margin: 5px 0;
 }
 
 .key {
     background-color: var(--letter-block);
-    color: white;
+    color: var(--keyboard-letter);
+    font-family: 'Poppins';
+    font-weight: bold;
     border: none;
     margin: 3px;
-    padding: 10px 15px;
+    padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 0 4px var(--shadow-box);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .key:hover {
@@ -170,6 +186,7 @@ body {
     box-shadow: 0 0 8px var(--shadow-box);
 }
 
-.key-delete, .key-enter {
+.key-delete,
+.key-enter {
     background-color: var(--mustard);
 }
