@@ -62,7 +62,7 @@ def remove_accents(text):
 def main():
     words = import_file("words.txt")
 
-    length_words = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    length_words = [5,6,7,8]
 
     # Render file for each length of words
     for length in length_words:

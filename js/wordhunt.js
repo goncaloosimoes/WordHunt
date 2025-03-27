@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.text())
             .then(text => {
                 validWords = text.split('\n').map(word => word.trim().toUpperCase());
-                console.log(validWords);
+                //console.log(validWords);
             })
             .catch(error => console.error('Erro ao carregar palavras:', error));
     }
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.json())
                 .then(data => {
                     targetWord = data.word;
-                    console.log("Palavra selecionada:", targetWord);
+                    //console.log("Palavra selecionada:", targetWord);
                 })
                 .catch(error => console.error('Erro ao buscar palavra:', error));
 
