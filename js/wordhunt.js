@@ -45,6 +45,27 @@ document.addEventListener("DOMContentLoaded", () => {
                             return;
                         }
                         else {
+                            // Logic to check the letters and their positions/existence
+                            for (let i = 0; i < guess.length; i++) {
+                                const letter = guess[i];
+                                const block = rows[currentRow][i];
+
+                                if (letter === targetWord[i]) {
+                                    block.classList.add("letter-correct");
+                                }
+                                else if (targetWord.includes(letter)) {
+                                    block.classList.add("letter-wrong-position");
+                                }
+                                else {
+                                    block.classList.add("letter-wrong");
+                                }
+                            }
+
+                            keys.forEach(key => {
+                                if (guess.includes(key.textContent) && !targetWord.includes(key.textContent)) {
+                                    key.classList.add("used-incorrect-letter");
+                                }
+                            })
                             // Wrong word
                             if (currentRow < rows.length - 1) {
                                 // If it is jump to the next line

@@ -1,31 +1,29 @@
 :root {
-    --yellow-gold: #F4C430;
-    --mustard: #D4A017;
-    --caramel: #A65F2B;
-    --reddish-brown: #7B3F00;
-    --dark-brown: #4B2E0F;
-    --background-light: #c9b88470;
-    --text-color: #714c2b;
-    --text-form: var(--text-color);
-    --shadow-box: var(--reddish-brown);
-    --letter-block: #743e00;
-    --letter-block-shadow: #303030;
-    --keyboard-letter: #ead1b7;
+    --text: #0f1410;
+    --background: #f6f8f7;
+    --primary: #7a9982;
+    --secondary: #aec1c0;
+    --accent: #97aeaf;
+
+    --correct-position: #4CAF50;
+    --wrong-position: #FF9800;
+    --wrong-letter: #F44336;
 }
 
 .dark-mode {
-    --background-light: #332316;
-    --text-color: #e3d8b8;
-    --dark-brown: #2B1B0F;
-    --shadow-box: #ac8569;
-    --text-form: #77705d;
-    --letter-block: #ffdaaf;
-    --letter-block-shadow: #949494;
-    --keyboard-letter: #4B2E0F;
+    --text: #ebf0ec;
+    --background: #070908;
+    --primary: #66856e;
+    --secondary: #3e5150;
+    --accent: #506768;
+
+    --correct-position: #2a742d;
+    --wrong-position: #c0790d;
+    --wrong-letter: #bb332a;
 }
 
 .intro {
-    color: var(--text-color);
+    color: var(--text);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,11 +35,11 @@
     align-items: center;
     font-family: 'Poppins';
     top: 40px;
-    color: var(--text-color);
+    color: var(--text);
 }
 
 body {
-    background-color: var(--background-light);
+    background-color: var(--background);
 }
 
 #theme-switch {
@@ -49,7 +47,7 @@ body {
     width: 50px;
     padding: 0;
     border-radius: 50%;
-    background-color: var(--yellow-gold);
+    background-color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,11 +63,11 @@ body {
 
 #theme-switch:hover {
     transform: rotate(20deg) scale(1.15);
-    box-shadow: 0 4px 12px var(--shadow-box);
+    box-shadow: 0 6px 12px var(--accent);
 }
 
 #theme-switch svg {
-    fill: var(--fourth-color);
+    fill: var(--background);
 }
 
 #theme-switch svg:last-child {
@@ -88,7 +86,7 @@ body {
     padding: 5px 5px;
     border: 0px;
     border-radius: 40%;
-    color: var(--text-form);
+    color: black;
     font-family: 'Poppins';
     font-size: 1rem;
     appearance: none;
@@ -114,12 +112,12 @@ body {
     display: inline-block;
     font-family: 'Poppins';
     font-weight: bold;
-    color: var(--keyboard-letter);
+    color: var(--text);
     width: 40px;
     height: 40px;
     margin: 5px;
-    background-color: var(--letter-block);
-    box-shadow: 0 4px 5px 2px var(--letter-block-shadow);
+    background-color: var(--primary);
+    box-shadow: 0 4px 6px 0px var(--accent);
     text-align: center;
     line-height: 40px;
     font-weight: bold;
@@ -162,8 +160,8 @@ body {
 }
 
 .key {
-    background-color: var(--letter-block);
-    color: var(--keyboard-letter);
+    background-color: var(--primary);
+    color: var(--text);
     font-family: 'Poppins';
     font-weight: bold;
     border: none;
@@ -173,7 +171,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 0 4px var(--shadow-box);
+    box-shadow: 0 0 4px var(--secondary);
     width: 50px;
     height: 50px;
     display: flex;
@@ -183,10 +181,27 @@ body {
 
 .key:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 8px var(--shadow-box);
+    box-shadow: 0 0 8px var(--accent);
 }
 
 .key-delete,
 .key-enter {
-    background-color: var(--mustard);
+    background-color: var(--secondary);
+}
+
+
+.letter-correct {
+    background-color: var(--correct-position);
+}
+
+.letter-wrong-position {
+    background-color: var(--wrong-position);
+}
+
+.letter-wrong {
+    background-color: var(--wrong-letter);
+}
+
+.used-incorrect-letter {
+    background-color: gray;
 }
