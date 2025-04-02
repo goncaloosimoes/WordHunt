@@ -2,6 +2,14 @@
 
 WordHunt é um jogo de palavras online que desafia os jogadores a encontrar palavras escondidas numa grelha de letras aleatória. A dificuldade do jogo é decidida pelo jogador (assume-se que quanto maior for a palavra mais difícil será o jogo).
 
+Para executar localmente o WordHunt copia e cola o seguinte excerto para o teu terminal Linux/macOS:
+```bash
+   git clone https://github.com/goncaloosimoes/WordHunt.git
+   cd WordHunt
+   chmod +x run.sh
+   ./run.sh
+   ```
+
 ## 🎮 Como Jogar?  
 1. Clica numa letra para selecioná-la.  
 2. Forma palavras conectando letras adjacentes. 
