@@ -1,0 +1,17 @@
+{
+  "name": "wordhunt",
+  "version": "1.0.0",
+  "description": "WordHunt word game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --check server.js && node --check api/server.js && node --check js/wordhunt.js && node --check js/darkmode.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

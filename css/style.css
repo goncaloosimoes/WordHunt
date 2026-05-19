@@ -27,19 +27,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 16px;
+    text-align: center;
 }
 
 .title {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins';
     top: 40px;
     color: var(--text);
 }
 
 body {
     background-color: var(--background);
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
 #theme-switch {
@@ -87,7 +91,6 @@ body {
     border: 0px;
     border-radius: 45%;
     color: black;
-    font-family: 'Poppins';
     font-size: 1rem;
     appearance: none;
     -webkit-appearance: none;
@@ -97,6 +100,26 @@ body {
     margin-left: 10px;
     text-align: center;
     width: 40px;
+}
+
+.message {
+    min-height: 24px;
+    margin: 18px 16px 0;
+    color: var(--text);
+    font-weight: 600;
+    text-align: center;
+}
+
+.message-success {
+    color: var(--correct-position);
+}
+
+.message-warning {
+    color: var(--wrong-position);
+}
+
+.message-error {
+    color: var(--wrong-letter);
 }
 
 #length-form:hover {
@@ -111,7 +134,6 @@ body {
 
 .letter-block {
     display: inline-block;
-    font-family: 'Poppins';
     font-weight: bold;
     color: var(--text);
     width: 40px;
@@ -121,7 +143,6 @@ body {
     box-shadow: 0 4px 6px 0px var(--accent);
     text-align: center;
     line-height: 40px;
-    font-weight: bold;
     border-radius: 5px;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -167,7 +188,6 @@ body {
 .key {
     background-color: var(--primary);
     color: var(--text);
-    font-family: 'Poppins';
     font-weight: bold;
     border: none;
     margin: 3px;
@@ -209,4 +229,35 @@ body {
 
 .used-incorrect-letter {
     background-color: gray;
+}
+
+@media (max-width: 620px) {
+    #theme-switch {
+        top: 16px;
+        right: 16px;
+    }
+
+    .game-rows {
+        width: 100%;
+        padding-bottom: 140px;
+    }
+
+    .letter-block {
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+        margin: 4px;
+    }
+
+    .keyboard {
+        bottom: 24px;
+        width: 100%;
+    }
+
+    .key {
+        width: clamp(28px, 8.5vw, 42px);
+        height: 44px;
+        margin: 2px;
+        padding: 0;
+    }
 }

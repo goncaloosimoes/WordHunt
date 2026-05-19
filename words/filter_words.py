@@ -1,79 +1,93 @@
-import os
+import argparse
+from pathlib import Path
 import unicodedata
 
-def file_exists(filename):
-    """Checks if a file exists"""
-    return os.path.isfile(filename)
+BASE_DIR = Path(__file__).resolve().parent
+DEFAULT_WORD_LENGTHS = (5, 6, 7, 8)
 
 
 def import_file(filename):
-    """Imports file content and returns a list of its lines"""
-    try:
-        with open(filename, "r") as file:
-            return file.read().splitlines()
-    except FileNotFoundError:
-        print(f"Couldn't find {filename}...")
+    """Imports file content and returns a list of its lines."""
+    path = Path(filename)
+    return path.read_text(encoding="utf-8").splitlines()
+
+
+def export_file(words, filename, overwrite=False):
+    """Exports a list of words to a file."""
+    path = Path(filename)
+
+    if path.exists() and not overwrite:
+        print(f"{path.name} already exists!")
+        return
+
+    path.write_text("\n".join(words) + "\n", encoding="utf-8")
+    print(f"Exported {len(words)} words to {path.name}")
+
+
+def filter_words(words, length):
+    """Returns a list of words with the specified length."""
+    return [word for word in words if len(word) == length]
+
+
+def clean_word(word):
+    """Normalizes a word and removes unsupported characters."""
+    cleaned_word = remove_accents(word).upper().replace(" ", "").strip()
+
+    if not cleaned_word.isalpha():
         return None
 
-
-def export_file(lst, filename):
-    """Exports a list of words to a file"""
-    count_words = 0
-    if file_exists(filename):
-        print(f"{filename} already exists!")
-        return
-    with open(filename, "w") as file:
-        for word in lst:
-            count_words += 1
-            file.write(word + "\n")
-    print(f"Exported {count_words} words to {filename}")
-    count_words = 0
-    return
+    return cleaned_word
 
 
-def filter_words(lst, length):
-    """Returns a list of words with the specified length"""
-    filtered_words = []
-    for word in lst:
-        if len(word) == length:
-            filtered_words.append(word)
-    return filtered_words
+def clean_list_of_words(words):
+    """Removes duplicates and returns a sorted list of normalized words."""
+    cleaned_words = set()
 
+    for word in words:
+        cleaned_word = clean_word(word)
+        if cleaned_word:
+            cleaned_words.add(cleaned_word)
 
-def clean_list_of_words(lst):
-    """Removes duplicates and returns a sorted list of words"""
-    """Also removes spaces, lines and bad characters"""
-    cleaned_list = []
-
-    for word in lst:
-        if "-" not in word:
-            cleaned_word = remove_accents(word).upper().replace(" ", "")
-            cleaned_list.append(cleaned_word)
-
-    return sorted(list(set(cleaned_list)))
+    return sorted(cleaned_words)
 
 
 def remove_accents(text):
-    """Removes accents from text, converting to base characters"""
+    """Removes accents from text, converting to base characters."""
     normalized = unicodedata.normalize('NFD', text)
-    return ''.join([c for c in normalized if not unicodedata.combining(c)])
+    return ''.join(c for c in normalized if not unicodedata.combining(c))
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Generate WordHunt word lists by length.")
+    parser.add_argument(
+        "--source",
+        default=BASE_DIR / "words.txt",
+        type=Path,
+        help="Source file with one word per line.",
+    )
+    parser.add_argument(
+        "--lengths",
+        default=DEFAULT_WORD_LENGTHS,
+        nargs="+",
+        type=int,
+        help="Word lengths to export.",
+    )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Replace existing generated word files.",
+    )
+    return parser.parse_args()
 
 
 def main():
-    words = import_file("words.txt")
+    args = parse_args()
+    words = clean_list_of_words(import_file(args.source))
 
-    length_words = [5,6,7,8]
-
-    # Render file for each length of words
-    for length in length_words:
-        filename_export = f"words_length_{length}.txt"
-        if not file_exists(filename_export):
-            filtered_words = filter_words(words,length)
-            filtered_words = clean_list_of_words(filtered_words)
-            export_file(filtered_words, filename_export)
-        else:
-            print(f"{filename_export} already exists!")
-            continue
+    for length in args.lengths:
+        filename_export = BASE_DIR / f"words_length_{length}.txt"
+        filtered_words = filter_words(words, length)
+        export_file(filtered_words, filename_export, overwrite=args.overwrite)
 
 
 if __name__ == "__main__":
